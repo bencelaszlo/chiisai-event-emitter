@@ -5,7 +5,7 @@ export type Subscriptions = Map<
 >;
 export type Unsubscribe = { unsubscribe: () => void };
 
-export class EventEmitter {
+export default class EventEmitter {
   subscriptions: Subscriptions;
 
   constructor() {
@@ -41,7 +41,7 @@ export class EventEmitter {
    * @param {string} eventName
    * @param {Array<any>} args
    */
-  emit(eventName: string, args: Array<any> = []): void {
+  emit(eventName: string, ...args: Array<any>): void {
     (this.subscriptions.get(eventName) || []).forEach(({ callback }) =>
       callback(...args)
     );
