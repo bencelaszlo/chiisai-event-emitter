@@ -1,6 +1,6 @@
 # Chiisai Event Emitter
 
-A minimal event emitter library for Node.JS.
+A minimal and performant event emitter library for Node.JS.
 
 ---
 
@@ -14,8 +14,6 @@ A minimal event emitter library for Node.JS.
 [![Commitizen Friendly][commitizen-img]][commitizen-url]
 [![Semantic Release][semantic-release-img]][semantic-release-url]
 
-> My awesome module
-
 ## Install
 
 ```bash
@@ -25,32 +23,17 @@ npm install chiisai-event-emitter
 ## Usage
 
 ```ts
-import { myPackage } from 'chiisai-event-emitter';
+import eventEmitter from 'chiisai-event-emitter';
 
-myPackage('hello');
-//=> 'hello from my package'
+const eventEmitter = new EventEmitter();
+
+eventEmitter.subscribe('test-event', () => console.log('test-event handler called!'));
+eventEmitter.subscribe('test-event', () => console.log('another test-event handler called!'))
+
+eventEmitter.emit('test-event')
+// test-event handler called!
+// another test-event handler called!
 ```
-
-## API
-
-### myPackage(input, options?)
-
-#### input
-
-Type: `string`
-
-Lorem ipsum.
-
-#### options
-
-Type: `object`
-
-##### postfix
-
-Type: `string`
-Default: `rainbows`
-
-Lorem ipsum.
 
 [build-img]:https://github.com/ryansonshine/chiisai-event-emitter/actions/workflows/release.yml/badge.svg
 [build-url]:https://github.com/ryansonshine/chiisai-event-emitter/actions/workflows/release.yml
