@@ -22,17 +22,27 @@ npm install chiisai-event-emitter
 
 ## Usage
 
+### Subscribe to an Event
+
 ```ts
 import { EventEmitter } from 'chiisai-event-emitter';
 
 const eventEmitter = new EventEmitter();
 
-eventEmitter.subscribe('test-event', () => console.log('test-event handler called!'));
-eventEmitter.subscribe('test-event', () => console.log('another test-event handler called!'))
+eventEmitter.subscribe('event', () => console.log('event-handler called!'));
 
-eventEmitter.emit('test-event')
-// test-event handler called!
-// another test-event handler called!
+eventEmitter.emit('event')
+// event-handler called!
+```
+
+### Unsubscibe
+
+```ts
+const unsubscibe = eventEmitter.subscribe('event', () => console.log('event-handler called!'));
+unsubscribe();
+
+eventEmitter.emit('event')
+// (nothing happened)
 ```
 
 [build-img]:https://github.com/bencelaszlo/chiisai-event-emitter/actions/workflows/release.yml/badge.svg

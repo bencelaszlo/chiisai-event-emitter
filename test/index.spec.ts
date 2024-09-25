@@ -70,7 +70,7 @@ describe('eventEmitter', () => {
     const mockEventArgs = { a: 'a' };
 
     const eventEmitter = new EventEmitter();
-    const { unsubscribe: unsubscribeCallbackA } = eventEmitter.subscribe(
+    const unsubscribeCallbackA = eventEmitter.subscribe(
       'test-event',
       testCallbackA
     );

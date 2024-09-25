@@ -3,7 +3,7 @@ export type Subscriptions = Map<
   string,
   Array<{ id: symbol; callback: EventCallback }>
 >;
-export type Unsubscribe = { unsubscribe: () => void };
+export type Unsubscribe = () => void;
 
 export class EventEmitter {
   subscriptions: Subscriptions;
@@ -26,15 +26,13 @@ export class EventEmitter {
         : [{ id, callback }]
     );
 
-    return {
-      unsubscribe: () =>
-        this.subscriptions.set(
-          eventName,
-          (this.subscriptions.get(eventName) || []).filter(
-            ({ id: subscriptionId }) => subscriptionId !== id
-          )
-        ),
-    };
+    return () =>
+      this.subscriptions.set(
+        eventName,
+        (this.subscriptions.get(eventName) || []).filter(
+          ({ id: subscriptionId }) => subscriptionId !== id
+        )
+      );
   }
 
   /**
