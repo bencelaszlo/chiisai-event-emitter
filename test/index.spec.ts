@@ -1,4 +1,4 @@
-import EventEmitter from '../src';
+import { EventEmitter } from '../src';
 
 describe('eventEmitter', () => {
   it('should add callback to subscriptions if it has no subscriptions', () => {

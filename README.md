@@ -23,7 +23,7 @@ npm install chiisai-event-emitter
 ## Usage
 
 ```ts
-import eventEmitter from 'chiisai-event-emitter';
+import { EventEmitter } from 'chiisai-event-emitter';
 
 const eventEmitter = new EventEmitter();
 
