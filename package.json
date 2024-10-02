@@ -58,9 +58,10 @@
     "lint-staged": "^13.2.1",
     "prettier": "^2.2.1",
     "semantic-release": "^21.0.1",
+    "terser": "^5.34.1",
     "ts-jest": "^27.0.5",
     "ts-node": "^10.2.1",
-    "typescript": "^4.2.4"
+    "typescript": "^4.9.5"
   },
   "config": {
     "commitizen": {
