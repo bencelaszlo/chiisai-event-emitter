@@ -82,4 +82,19 @@ describe('eventEmitter', () => {
     expect(testCallbackB).toHaveBeenCalled();
     expect(testCallbackB).toHaveBeenCalledWith(mockEventArgs);
   });
+
+  it('should not call callbacks after an event has been deleted', () => {
+    const testCallbackA = jest.fn();
+    const testCallbackB = jest.fn();
+
+    const eventEmitter = new EventEmitter();
+    eventEmitter.subscribe('test-event', testCallbackA);
+    eventEmitter.subscribe('test-event', testCallbackB);
+
+    eventEmitter.clear('test-event');
+    eventEmitter.emit('test-event');
+
+    expect(testCallbackA).not.toHaveBeenCalled();
+    expect(testCallbackB).not.toHaveBeenCalled();
+  });
 });

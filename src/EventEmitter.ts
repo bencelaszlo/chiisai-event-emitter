@@ -42,10 +42,21 @@ export class EventEmitter {
   /**
    * @param {string} eventName
    * @param {Array<any>} args
+   * @returns void
    */
   emit(eventName: string, ...args: Array<any>): void {
     this.subscriptions
       .get(eventName)
       .forEach(({ callback }) => callback(...args));
+  }
+  /**
+   *
+   * @param eventName eventName to be deleted
+   * @returns void
+   */
+  clear(eventName: string): void {
+    this.subscriptions = new Subscriptions(
+      [...this.subscriptions].filter(([key]) => key !== eventName)
+    );
   }
 }
