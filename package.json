@@ -7,7 +7,9 @@
     "lib/**/*"
   ],
   "scripts": {
-    "build": "tsc --project tsconfig.build.json",
+    "tsc": "tsc --project tsconfig.build.json",
+    "minify": "terser ./lib/index.js -o ./lib/index.min.js --compress --mangle --module",
+    "build": "npm run tsc && npm run minify",
     "clean": "rm -rf ./lib/",
     "cm": "cz",
     "lint": "eslint ./src/ --fix",
