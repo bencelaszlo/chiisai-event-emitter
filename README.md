@@ -24,6 +24,8 @@ npm install chiisai-event-emitter
 
 ### Subscribe to an Event
 
+Use `EventEmitter.subscribe(eventName, callback)` to subscribe to an event.
+
 ```ts
 import { EventEmitter } from 'chiisai-event-emitter';
 
@@ -37,12 +39,28 @@ eventEmitter.emit('event')
 
 ### Unsubscibe
 
+`EventEmitter.subscribe(eventName, callback)` method returns a function which can be called to unsubscribe the callback from the event.
+
 ```ts
 const unsubscibe = eventEmitter.subscribe('event', () => console.log('event-handler called!'));
 unsubscribe();
 
 eventEmitter.emit('event')
 // (nothing happened)
+```
+
+### Delete an Event
+
+`EventEmitter.clear(eventName)` method removes an event and all callbacks subscibed to this event.
+
+```ts
+eventEmitter.subscribe('event', () => console.log('event-handler called!'));
+eventEmitter.subscribe('event', () => console.log('another event-handler called!'));
+eventEmitter.clear('event')
+
+eventEmitter.emit('event')
+// (nothing happened)
+
 ```
 
 [build-img]:https://github.com/bencelaszlo/chiisai-event-emitter/actions/workflows/release.yml/badge.svg
