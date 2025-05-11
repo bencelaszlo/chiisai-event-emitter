@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type EventCallback<T = void> = (...args: Array<any>) => T;
 
 export class Subscriptions extends Map<
@@ -44,6 +45,7 @@ export class EventEmitter {
    * @param {Array<any>} args
    * @returns void
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   emit(eventName: string, ...args: Array<any>): void {
     this.subscriptions
       .get(eventName)
