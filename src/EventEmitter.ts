@@ -1,4 +1,4 @@
-// biome-ignore lint/suspicious/noExplicitAny: temp until safe event map is implemented
+// biome-ignore lint/suspicious/noExplicitAny: intentional
 export type EventCallback<T = void> = (...args: Array<any>) => T;
 
 export class Subscriptions extends Map<
@@ -45,12 +45,11 @@ export class EventEmitter {
 	 * @param {Array<any>} args
 	 * @returns void
 	 */
-	// biome-ignore lint/suspicious/noExplicitAny: temp until safe event map is implemented
+	// biome-ignore lint/suspicious/noExplicitAny: intentional
 	emit(eventName: string, ...args: Array<any>): void {
-		// biome-ignore lint/complexity/noForEach:
-		this.subscriptions
-			.get(eventName)
-			.forEach(({ callback }) => callback(...args));
+		for (const { callback } of this.subscriptions.get(eventName)) {
+			callback(...args);
+		}
 	}
 	/**
 	 *
