@@ -4,8 +4,6 @@ A minimal and performant event emitter library for Node.JS.
 
 ---
 
-# chiisai-event-emitter
-
 [![npm package][npm-img]][npm-url]
 [![Build Status][build-img]][build-url]
 [![Downloads][downloads-img]][downloads-url]
