@@ -44,7 +44,7 @@
   },
   "homepage": "https://github.com/bencelaszlo/chiisai-event-emitter#readme",
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
+    "@biomejs/biome": "2.4.15",
     "@ryansonshine/commitizen": "^4.2.8",
     "@ryansonshine/cz-conventional-changelog": "^3.3.4",
     "@types/jest": "^29.5.14",
